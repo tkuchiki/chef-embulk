@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+
+<% node[:embulk][:plugins].each do |plugin| %>
+gem '<%= plugin[:name] %>'<% unless plugin[:version].nil? %>, "<%= plugin[:version] %>"<% end %>
+<% end %>
