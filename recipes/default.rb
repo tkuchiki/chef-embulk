@@ -1,8 +1,9 @@
 package "curl"
 
 bash "download embulk.jar" do
-  cwd "/tmp"
-  code <<-EOC
+  user  node[:embulk][:user]
+  group node[:embulk][:group]
+  code  <<-EOC
   curl -L #{node[:embulk][:download_uri]} -o #{node[:embulk][:jar]}
   chmod +x #{node[:embulk][:jar]}
 EOC
